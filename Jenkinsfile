@@ -22,7 +22,7 @@ pipeline {
         stage('deploy') {
             steps {
                 sh '''
-                docker stop ttd-frontend
+                docker stop ttd-frontend || true
                 docker start -p3000:80 --name ttd-frontend christianheimke/ttd-frontend:jenkins-${BUILD_NUMBER}
                 '''
             }
