@@ -23,6 +23,7 @@ pipeline {
             steps {
                 sh '''
                 docker stop ttd-frontend || true
+                docker rm -f ttd-frontend || true
                 docker run -p3000:80 -d --name ttd-frontend christianheimke/ttd-frontend:jenkins-${BUILD_NUMBER}
                 '''
             }
